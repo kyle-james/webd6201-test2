@@ -153,7 +153,11 @@ let app;
 
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
-           
+            var taskDeleting = $(this).closest('#task');
+            if(window.confirm("Are you sure?"))
+            {
+                taskDeleting.remove();
+            }
         });
     }
 
