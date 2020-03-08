@@ -333,14 +333,7 @@ let app;
     {
        
     }
-
-    function A()
-    {
-
-    }
     
-    
-
     window.addEventListener("load", Start);
 })(app || (app = {}));
 
