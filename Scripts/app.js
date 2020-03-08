@@ -102,41 +102,44 @@ let app;
 
         // Task 1 a
         $("#newTaskButton").on("click", function(){
-            var parent = document.getElementById("taskList");
-            var newItem = document.createElement("li");
-            newItem.setAttribute("class", "list-group-item");   
-            newItem.setAttribute("id", "task");
-            var newItemSpanTaskText = document.createElement("span");
-            newItemSpanTaskText.setAttribute("id", "taskText");
-            newItemSpanTaskText.innerText = document.getElementById("taskTextInput").value;
-            newItem.appendChild(newItemSpanTaskText);
-            var newItemSpanFloatRight = document.createElement("span");
-            newItemSpanFloatRight.setAttribute("class", "float-right");
-            var newItemButtonEdit = document.createElement("button");
-            newItemButtonEdit.setAttribute("class", "btn btn-outline-primary btn-sm editButton");
-            var newItemEditIcon = document.createElement("i");
-            newItemEditIcon.setAttribute("class", "fas fa-edit");
-            newItemButtonEdit.appendChild(newItemEditIcon);
-            newItemSpanFloatRight.appendChild(newItemButtonEdit);
-            var newItemButtonDelete = document.createElement("button");
-            var newItemDeleteIcon = document.createElement("i");
-            newItemDeleteIcon.setAttribute("class", "fas fa-trash-alt");
-            newItemButtonDelete.appendChild(newItemDeleteIcon);
-            newItemButtonDelete.setAttribute("class", "btn btn-outline-danger btn-sm deleteButton");
-            newItemSpanFloatRight.appendChild(newItemButtonDelete);
-            newItem.appendChild(newItemSpanFloatRight);
+            if(document.getElementById("taskTextInput").value != "")
+            {
+                var parent = document.getElementById("taskList");
+                var newItem = document.createElement("li");
+                newItem.setAttribute("class", "list-group-item");   
+                newItem.setAttribute("id", "task");
+                var newItemSpanTaskText = document.createElement("span");
+                newItemSpanTaskText.setAttribute("id", "taskText");
+                newItemSpanTaskText.innerText = document.getElementById("taskTextInput").value;
+                newItem.appendChild(newItemSpanTaskText);
+                var newItemSpanFloatRight = document.createElement("span");
+                newItemSpanFloatRight.setAttribute("class", "float-right");
+                var newItemButtonEdit = document.createElement("button");
+                newItemButtonEdit.setAttribute("class", "btn btn-outline-primary btn-sm editButton");
+                var newItemEditIcon = document.createElement("i");
+                newItemEditIcon.setAttribute("class", "fas fa-edit");
+                newItemButtonEdit.appendChild(newItemEditIcon);
+                newItemSpanFloatRight.appendChild(newItemButtonEdit);
+                var newItemButtonDelete = document.createElement("button");
+                var newItemDeleteIcon = document.createElement("i");
+                newItemDeleteIcon.setAttribute("class", "fas fa-trash-alt");
+                newItemButtonDelete.appendChild(newItemDeleteIcon);
+                newItemButtonDelete.setAttribute("class", "btn btn-outline-danger btn-sm deleteButton");
+                newItemSpanFloatRight.appendChild(newItemButtonDelete);
+                newItem.appendChild(newItemSpanFloatRight);
 
-            var newTextInput = document.createElement("input");
-            newTextInput.setAttribute("class", "form-control edit-task editTextInput");
-            newTextInput.setAttribute("type", "text");
-            newItem.appendChild(newTextInput);
+                var newTextInput = document.createElement("input");
+                newTextInput.setAttribute("class", "form-control edit-task editTextInput");
+                newTextInput.setAttribute("type", "text");
+                newItem.appendChild(newTextInput);
 
-            parent.appendChild(newItem);
+                parent.appendChild(newItem);
+            }
         });
 
         // Task 1 b
         $("ul").on("click", ".editButton", function(){
- 
+           
         });
 
         // Task 1 c
