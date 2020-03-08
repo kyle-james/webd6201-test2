@@ -105,50 +105,83 @@ let app;
 
         // Task 1 a
         $("#newTaskButton").on("click", function(){
+            //this is so nothing happens if the text input is blank; a 'saftey' feature
             if(document.getElementById("taskTextInput").value != "")
             {
+                //var declarations
+                //parent
                 var parent = document.getElementById("taskList");
+                //new list node
                 var newItem = document.createElement("li");
+                //attributes for new list node
                 newItem.setAttribute("class", "list-group-item");   
                 newItem.setAttribute("id", "task");
+                //new span node for task text
                 var newItemSpanTaskText = document.createElement("span");
+                //attributes and content for new span node
                 newItemSpanTaskText.setAttribute("id", "taskText");
                 newItemSpanTaskText.innerText = document.getElementById("taskTextInput").value;
-                newItem.appendChild(newItemSpanTaskText);
+                //new span node for the edit and delete buttons
                 var newItemSpanFloatRight = document.createElement("span");
+                //attributes for new span node
                 newItemSpanFloatRight.setAttribute("class", "float-right");
+                //new button node for the edit button
                 var newItemButtonEdit = document.createElement("button");
+                //attributes for new edit button
                 newItemButtonEdit.setAttribute("class", "btn btn-outline-primary btn-sm editButton");
+                //new i node for edit button icon
                 var newItemEditIcon = document.createElement("i");
+                //attributes for new edit button icon
                 newItemEditIcon.setAttribute("class", "fas fa-edit");
-                newItemButtonEdit.appendChild(newItemEditIcon);
-                newItemSpanFloatRight.appendChild(newItemButtonEdit);
+                //new button node for new delete button
                 var newItemButtonDelete = document.createElement("button");
-                var newItemDeleteIcon = document.createElement("i");
+                //attributes for new delete button
                 newItemDeleteIcon.setAttribute("class", "fas fa-trash-alt");
-                newItemButtonDelete.appendChild(newItemDeleteIcon);
+                //new i node for new delete button icon
+                var newItemDeleteIcon = document.createElement("i");
+                //attributes for new delete button icon
                 newItemButtonDelete.setAttribute("class", "btn btn-outline-danger btn-sm deleteButton");
-                newItemSpanFloatRight.appendChild(newItemButtonDelete);
-                newItem.appendChild(newItemSpanFloatRight);
-
+                //new input node for new input
                 var newTextInput = document.createElement("input");
+                //attributes for new input
                 newTextInput.setAttribute("class", "form-control edit-task editTextInput");
                 newTextInput.setAttribute("type", "text");
+                //append new span node for task text into new list node
+                newItem.appendChild(newItemSpanTaskText);
+                //append new edit icon into edit button
+                newItemButtonEdit.appendChild(newItemEditIcon);
+                //append new edit button into span right float
+                newItemSpanFloatRight.appendChild(newItemButtonEdit);
+                //append new delete icon into delete button
+                newItemButtonDelete.appendChild(newItemDeleteIcon);
+                //append new delete button into span right float
+                newItemSpanFloatRight.appendChild(newItemButtonDelete);
+                //append new span right float into new list node
+                newItem.appendChild(newItemSpanFloatRight);
+                //append new text input node into new list node
                 newItem.appendChild(newTextInput);
-
+                //append new list node into the parent
                 parent.appendChild(newItem);
             }
         });
 
         // Task 1 b
         $("ul").on("click", ".editButton", function(){  
+            //node for the correlating text input for button press
             var taskEditing = $(this).closest('#task').children(".editTextInput");
+            //node for the correlating task text for the button press
             var taskNewText = $(this).closest('#task').children("#taskText");
+            //shows the text input for the correlating button press
             taskEditing.show();
+            //executes on every button press
             $(document).on('keypress', function(e) {
+                //checks if a button press happens to be 'return'
                 if(e.which == 13) {
+                    //stores value of the text input correlating to the pressed button
                     var input = taskEditing.val();
+                    //sets the tet of the tastText node to the input
                     taskNewText.text(input);
+                    //hides the correlating text input of the pressed button
                     taskEditing.hide();
                 }
             });
@@ -156,9 +189,12 @@ let app;
 
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
+            //node for the correlating list node of the button press
             var taskDeleting = $(this).closest('#task');
+            //shows a confirm window and if user presses 'ok', returns true
             if(window.confirm("Are you sure?"))
             {
+                //removes the correlating list node for the button press
                 taskDeleting.remove();
             }
         });
