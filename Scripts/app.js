@@ -138,8 +138,17 @@ let app;
         });
 
         // Task 1 b
-        $("ul").on("click", ".editButton", function(){
-           
+        $("ul").on("click", ".editButton", function(){  
+            var taskEditing = $(this).closest('#task').children(".editTextInput");
+            var taskNewText = $(this).closest('#task').children("#taskText");
+            taskEditing.show();
+            $(document).on('keypress', function(e) {
+                if(e.which == 13) {
+                    var input = taskEditing.val();
+                    taskNewText.text(input);
+                    taskEditing.hide();
+                }
+            });
         });
 
         // Task 1 c
