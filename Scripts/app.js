@@ -1,3 +1,9 @@
+/*
+KYLE JAMES
+100704048
+2020-03-08
+*/
+
 class Contact
 {
     constructor(contactName = "", emailAddress = "", contactNumber = "", contactMessage = "")
@@ -8,9 +14,6 @@ class Contact
         this.contactMessage = contactMessage;
     }
 }
-
-
-
 
 "use strict";
 //IIFE - Immediately Invoked Function Expression
